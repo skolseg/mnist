@@ -56,6 +56,21 @@ print('--------------------------------')
 
 print('')
 
+# Accuracy bar chart
+models = ['Neural Network', 'KNN', 'Random Forest']
+accuracies = [accuracy_nn, accuracy_knn, accuracy_rf]
+colors = ['steelblue', 'darkorange', 'forestgreen']
+
+fig, ax = plt.subplots(figsize=(8, 5))
+bars = ax.bar(models, accuracies, color=colors)
+ax.set_ylim(0.9, 1.0)
+ax.set_ylabel('Accuracy')
+ax.set_title('Model Accuracy Comparison')
+for bar, acc in zip(bars, accuracies):
+    ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 0.001, f'{acc:.4f}', ha='center', va='bottom')
+plt.tight_layout()
+plt.show()
+
 # Confusion Matrix
 print('Confusion Matrices:')
 
