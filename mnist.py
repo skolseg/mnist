@@ -36,19 +36,16 @@ nn_model.add(tf.keras.layers.Dense(128, activation='relu'))
 nn_model.add(tf.keras.layers.Dense(10, activation='softmax'))
 nn_model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
 nn_model.fit(x_train_nn, y_train, epochs=3)
-nn_model.save('neural_network/mnist/models/handwritten.keras')
 
 # KNN
 print('Trener KNN...')
 knn_model = KNeighborsClassifier(n_neighbors=3)
 knn_model.fit(x_train_sk, y_train)
-joblib.dump(knn_model, 'neural_network/mnist/models/knn_model.pkl')
 
 # Random Forest
 print('Trener Random Forest...')
 rf_model = RandomForestClassifier(n_estimators=100)
 rf_model.fit(x_train_sk, y_train)
-joblib.dump(rf_model, 'neural_network/mnist/models/random_forest_model.pkl')
 
 
 # ============================================================
